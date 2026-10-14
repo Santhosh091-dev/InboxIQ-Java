@@ -1,0 +1,22 @@
+# JDK and Maven tool folders
+jdk-*/
+apache-maven-*/
+
+# Build output
+target/
+
+# Secrets - never commit
+src/main/resources/application.properties
+application.properties
+*.bak
+credentials.json
+tokens/
+.env
+
+# Local leftovers
+phase3-backup/
+pom-additions.xml
+.vscode/
+
+client_secret*.json
+*.apps.googleusercontent.com.json
