@@ -1,14 +1,84 @@
 {
-  "info": { "name": "InboxIQ API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
-  "variable": [ { "key": "baseUrl", "value": "http://localhost:8080" } ],
-  "item": [
-    { "name": "1. Create/get user", "request": { "method": "GET", "url": "{{baseUrl}}/api/user?email=test@gmail.com" } },
-    { "name": "2. Validation error (bad email)", "request": { "method": "GET", "url": "{{baseUrl}}/api/user?email=abc" } },
-    { "name": "3. Test Gemini", "request": { "method": "GET", "url": "{{baseUrl}}/api/test-classify" } },
-    { "name": "4. Scan demo", "request": { "method": "GET", "url": "{{baseUrl}}/api/scan-demo?email=test@gmail.com" } },
-    { "name": "5. List senders", "request": { "method": "GET", "url": "{{baseUrl}}/api/senders/user/1" } },
-    { "name": "6. Override decision", "request": { "method": "PUT", "url": "{{baseUrl}}/api/senders/16/override?decision=keep" } },
-    { "name": "7. Unsubscribe (dry run)", "request": { "method": "POST", "url": "{{baseUrl}}/api/senders/16/unsubscribe?dryRun=true" } },
-    { "name": "8. JDBC analytics", "request": { "method": "GET", "url": "{{baseUrl}}/api/analytics/summary/1" } }
-  ]
+    "info":  {
+                 "name":  "InboxIQ API",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "variable":  [
+                     {
+                         "key":  "baseUrl",
+                         "value":  "http://localhost:8080"
+                     }
+                 ],
+    "item":  [
+                 {
+                     "name":  "1. Create/get user",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/user?email=test@gmail.com"
+                                 }
+                 },
+                 {
+                     "name":  "2. Validation error (bad email)",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/user?email=abc"
+                                 }
+                 },
+                 {
+                     "name":  "3. Test Gemini",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/test-classify"
+                                 }
+                 },
+                 {
+                     "name":  "4. Scan demo",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/scan-demo?email=test@gmail.com"
+                                 }
+                 },
+                 {
+                     "name":  "5. List senders",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/senders/user/1"
+                                 }
+                 },
+                 {
+                     "name":  "6. Override decision",
+                     "request":  {
+                                     "method":  "PUT",
+                                     "url":  "{{baseUrl}}/api/senders/16/override?decision=keep"
+                                 }
+                 },
+                 {
+                     "name":  "7. Unsubscribe (dry run)",
+                     "request":  {
+                                     "method":  "POST",
+                                     "url":  "{{baseUrl}}/api/senders/16/unsubscribe?dryRun=true"
+                                 }
+                 },
+                 {
+                     "name":  "8. JDBC analytics",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/analytics/summary/1"
+                                 }
+                 },
+                 {
+                     "name":  "9. Real Gmail storage",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/gmail/storage"
+                                 }
+                 },
+                 {
+                     "name":  "10. Real Gmail scan",
+                     "request":  {
+                                     "method":  "GET",
+                                     "url":  "{{baseUrl}}/api/gmail/scan"
+                                 }
+                 }
+             ]
 }

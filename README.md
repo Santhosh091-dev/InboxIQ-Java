@@ -48,4 +48,19 @@ Controller -> Service -> Repository (JPA / JDBC) -> MySQL
 | GET | /api/analytics/summary/{userId} | JDBC decision counts |
 
 ## Status
-The scan currently classifies sample senders. Live Gmail/Drive access through OAuth 2.0 is the planned next step.
+Live Gmail scanning works through Google OAuth 2.0 (read-only scopes). The sample-sender scan is kept for offline demos.
+
+## Live Gmail endpoints
+| Method | URL | Purpose |
+|---|---|---|
+| GET | /api/gmail/storage | Real Gmail/Drive storage usage (first call opens the Google login) |
+| GET | /api/gmail/scan?maxMessages=40&maxSenders=8 | Read real subscription emails, classify senders with Gemini, save with Hibernate |
+
+## Google setup
+1. Create a project in Google Cloud Console and enable the Gmail API and Google Drive API
+2. Under Google Auth Platform, keep the app in Testing and add your Gmail address as a test user
+3. Add the scopes gmail.readonly and drive.metadata.readonly
+4. Create an OAuth client of type Desktop app, download the JSON and save it as `credentials.json` in the project root
+5. Run the app and open /api/gmail/storage once to sign in. The login is saved in `tokens/` and expires after about 7 days in Testing mode
+
+`credentials.json`, `tokens/` and `application.properties` are gitignored and must never be committed.
