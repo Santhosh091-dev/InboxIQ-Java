@@ -7,7 +7,6 @@ import com.inboxiq.repository.ScanHistoryRepository;
 import com.inboxiq.repository.SenderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ public class ScanService {
             List.of("New arrivals just for you", "Your cart misses you"))
     );
 
-    @Transactional
     public List<Map<String, Object>> demoScan(String email) throws InterruptedException {
         User user = userService.getOrCreateUser(email);
         List<Map<String, Object>> results = new ArrayList<>();
@@ -44,7 +42,7 @@ public class ScanService {
 
             // Upsert: reuse the existing row for this user + sender, otherwise create one
             Sender sender = senderRepository
-                    .findByUserIdAndSenderEmail(user.getId(), s.sender())
+                    .findFirstByUserIdAndSenderEmailOrderByIdAsc(user.getId(), s.sender())
                     .orElseGet(Sender::new);
 
             sender.setUser(user);

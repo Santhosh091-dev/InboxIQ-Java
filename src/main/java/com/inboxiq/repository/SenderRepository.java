@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface SenderRepository extends JpaRepository<Sender, Long> {
     List<Sender> findByUserId(Long userId);
-    Optional<Sender> findByUserIdAndSenderEmail(Long userId, String senderEmail);
+    Optional<Sender> findFirstByUserIdAndSenderEmailOrderByIdAsc(Long userId, String senderEmail);
 }

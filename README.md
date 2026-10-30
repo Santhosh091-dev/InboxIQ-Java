@@ -64,3 +64,9 @@ Live Gmail scanning works through Google OAuth 2.0 (read-only scopes). The sampl
 5. Run the app and open /api/gmail/storage once to sign in. The login is saved in `tokens/` and expires after about 7 days in Testing mode
 
 `credentials.json`, `tokens/` and `application.properties` are gitignored and must never be committed.
+
+## Database notes
+After the first run, execute docs/database-setup.sql once in MySQL. It widens unsubscribe_link and adds a unique key so rescans never create duplicate senders.
+
+## Notes on scanning
+Only one scan can run at a time, and a second request returns a clear error. Each save commits on its own, so no long database lock is held during the slow AI calls.
